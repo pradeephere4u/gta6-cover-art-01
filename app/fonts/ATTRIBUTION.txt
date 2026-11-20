@@ -1,0 +1,8 @@
+Fonts shipped with this app
+----------------------------
+NotoSansDisplay-Black.ttf and NotoSansDisplay-Bold.ttf are the Noto Sans
+Display family, designed by Google, and are licensed under the SIL Open
+Font License, Version 1.1 (https://openfontlicense.org). The license lets
+anyone use, study, copy, merge, embed, modify, redistribute and sell the
+fonts, with or without fee, provided the fonts themselves are not sold on
+their own. No Rockstar Games font is used anywhere in this app.

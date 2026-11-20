@@ -1,0 +1,191 @@
+/* Neon Dusk Cover Studio: a dark editor around a bright poster preview.
+   The two display faces are files under app/fonts/, licensed under the
+   SIL Open Font License (see app/fonts/ATTRIBUTION.txt). */
+
+@font-face {
+  font-family: 'NeonDusk';
+  src: url('./fonts/NotoSansDisplay-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NeonDuskBold';
+  src: url('./fonts/NotoSansDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: #0d0618;
+  color: #f4ecff;
+  font-family: 'Noto Sans Display', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.studio {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  min-height: 100vh;
+}
+
+.panel {
+  background: #170b2a;
+  border-right: 1px solid #3a1d5e;
+  padding: 20px 18px 28px;
+  overflow-y: auto;
+}
+
+.panel h1 {
+  font-family: 'NeonDusk', 'Noto Sans Display', sans-serif;
+  font-size: 26px;
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  margin: 0 0 4px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.panel h1 span {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 3px;
+  color: #ff7ad9;
+}
+
+.lede { color: #cbb8e8; margin: 0 0 14px; }
+
+.panel h2 {
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ff9ecf;
+  margin: 18px 0 8px;
+  border-top: 1px solid #3a1d5e;
+  padding-top: 14px;
+}
+
+.panel h3 {
+  font-size: 13px;
+  margin: 0 0 6px;
+  color: #ffd166;
+}
+
+.row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+button {
+  font: inherit;
+  color: #f4ecff;
+  background: #2a1448;
+  border: 1px solid #5b2d8f;
+  border-radius: 6px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+
+button:hover { background: #3a1d5e; }
+
+button.active {
+  background: #ff2e88;
+  border-color: #ff2e88;
+  color: #fff;
+}
+
+label {
+  display: block;
+  margin: 8px 0;
+  color: #d9c8f2;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  border: 1px solid #5b2d8f;
+  border-radius: 6px;
+  background: #0d0618;
+  color: #fff;
+  font: inherit;
+}
+
+input[type="range"] { width: 100%; accent-color: #ff2e88; }
+
+input[type="file"] { display: block; margin-top: 4px; font-size: 13px; }
+
+.slot {
+  border: 1px solid #3a1d5e;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 8px 0;
+  background: #1d0f33;
+}
+
+.slot-off { opacity: 0.35; }
+
+.slot-off input, .slot-off button { pointer-events: none; }
+
+.sample-btn { margin: 6px 0 2px; font-size: 13px; }
+
+.fill-all {
+  background: #1d0f33;
+  border: 1px dashed #5b2d8f;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+#export {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  font-family: 'NeonDusk', 'Noto Sans Display', sans-serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff2e88, #ff7a3d);
+  border: none;
+  color: #fff;
+}
+
+#export:hover { filter: brightness(1.1); }
+
+#status { color: #9be8c8; min-height: 1.4em; margin: 10px 0 0; }
+
+.preview {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(255, 46, 136, 0.16), transparent 55%),
+    radial-gradient(circle at 20% 85%, rgba(255, 122, 61, 0.14), transparent 50%),
+    #0d0618;
+}
+
+.preview canvas {
+  max-width: 100%;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border: 1px solid #3a1d5e;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Cover-only scene: the controls go away and the cover fills the frame. */
+body.scene-cover .panel { display: none; }
+body.scene-cover .studio { grid-template-columns: 1fr; }
+body.scene-cover .preview { padding: 0; background: #0d0618; }
+body.scene-cover .preview canvas {
+  max-height: 100vh;
+  border: none;
+  box-shadow: none;
+}
